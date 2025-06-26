@@ -1,0 +1,77 @@
+
+Scenario based question
+---------------------
+- Supoose i have created one ec2 instance and i want access s3 bucket and that s3 bucket is not public.
+- Suppose i have ASG with 2 instance, now i want reboot the one of the instance without recreating it.
+- Following is CIDR range 10.105.0.0/27, By using this cidr tell me the IP count. How many IP you will get.
+
+
+Route53
+----------
+- Blue Green Deployment? How can achive in AWS?
+- What are the types of Route 53 policies?
+
+Types Of Routing Policy
+Simple Routing: 
+	- It allows to configure DNS with no special Route 53 Routing. It is mainly used when you have a single resource that performs a given function for 	your domain.
+Failover Routing: 
+	- It routes traffic to another or alternate resource when the previous resource is unhealthy. Route request from primary region to secondary region
+Geolocation routing policy: 
+	- Use when you want to route traffic based on the location of users.
+Geo-proximity routing policy: 
+	- Use when you want to route traffic based on the location of your resources.
+Latency-based Routing: 
+	- Use when you have resources across multiple AWS regions and want to route traffic to the region that provides the best latency.
+Weighted routing policy: 
+	- Use to route traffic to multiple resources as per the provided weightage.
+
+
+S3 
+----------
+- what are the s3 lifecycle policies
+- IS s3 bucekt created globally in AWS account?
+
+KMS
+----
+What is use of KMS key in AWS?
+Is it possible to create EBS snapshot by using KMS key?
+
+EFS
+----
+How to mount EFS with EC2 instances
+
+EKS
+---
+Steps to create in EKS cluster?
+What are the use cases of EKS as compare the to docker?
+What is diff between ECS and EKS?
+What is use of Taint Tolerence in EKS?
+What are the diff node, pod, anti-pod affinities?
+
+IAM
+---
+- Is it possibe to attach IAM role to IAM user in AWS?
+
+DMS
+---
+How to migrate OnPrimises Orcle DB to AWS RDS
+- Steps to create Migration
+1. Create a MySQL database instance in Amazon RDS 
+2. Create a replication instance in AWS Database Migration Service (AWS DMS)
+3. Create endpoints in AWS DMS 
+4. Create a replication task in AWS DMS
+5. Complete the migration and clean up resources
+
+
+
+==================================================================
+
+Docker
+--------
+- 3 types of docker volumes
+- What are the Advanatages of EKS over Docker
+
+
+Helmchart Question
+===================
+

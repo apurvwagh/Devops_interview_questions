@@ -1,0 +1,76 @@
+1. Continue on failure in declarative script
+==============================================
+steps {
+	script {
+			// catchError sets the stageResult to FAILED, but does not stop next stages from running
+            	catchError (buildResult: 'FAILURE', stageResult: 'FAILURE') {
+            		sh "echo running unit-tests"
+		 }
+	}
+ }	
+
+2. Skip the first stage run the pipeline from second stage
+===========================================================
+        stage('First Stage') {
+            when {
+                // Specify a condition that always evaluates to false
+                expression { false }
+            }
+            steps {
+                // Steps for the first stage
+                echo "This stage will be skipped"
+            }
+        }
+
+3. Shared Libraries
+=====================
+- Used as template
+- Reduce Duplication of code
+- Easy onboarding of new microservices
+- Code Maintaince
+
+
+4. Explain how you would handle a scenario where a critical Jenkins job fails due to a network outage.
+======================================================================================================
+- Retry Mechanism
+- Notification System
+- Job Dependency Management
+
+5. Your Jenkins server is overloaded with concurrent builds. How can you optimize performance?
+===============================================================================================
+- Utilize agent pools and dynamic allocation to distribute builds across available slave nodes.
+
+
+6. How can you ensure a development team member accidentally pushing bad code doesn't break the production environment during a CI/CD pipeline?
+===============================================================================================
+- Implement gates with unit tests or code quality checks before deploying to production.
+
+
+7. Jenkins pipeline seems slow. How can you optimize its performance?
+======================================================================
+- Use parallel stages to run independent tasks concurrently within the pipeline.
+
+
+8. You suspect a security vulnerability in a Jenkins plugin. What steps should you take?
+=======================================================================================
+- Disable the plugin, update Jenkins to the latest version, and investigate alternative secure plugins if necessary
+
+9. How can you achieve high availability for your Jenkins service?
+====================================================================
+- Set up a Jenkins cluster with multiple nodes for redundancy and load balancing.
+
+
+10. To create an agent in Jenkins, you can follow these steps:
+================================================================
+1. Goto Jenkins Dashboard
+2. Goto Manage Nodes
+3. Create new node and setup the name and type of the node
+	- The node type can be either a "Permanent Agent" or a "Docker Agent". 
+4. Setup agent configuration: 
+	- Number of executors
+	- remote root directory
+5. Set the Launch Method: 
+	- SSH
+	- JNLP (Java Web Start)
+6. You may need to perform additional steps to connect the agent to the Jenkins master
+7. Verify the connection.

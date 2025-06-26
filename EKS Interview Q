@@ -1,0 +1,106 @@
+1. In EKS you can track the versioning of each deployment by utilizing labels and annotations
+============================================================
+Labels: Define the labels in k8s resource definition file like app-version
+Annotations: Use annotations to store additional information about the deployment, such as release notes, changelog, or commit hash.
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  labels:
+    app-version: v1.0.0
+  annotations:
+    release-notes: "Added new feature XYZ"
+    commit-hash: "abc1234"
+...
+
+Command:
+1) See the history of deployment
+---------------------------
+ kubectl rollout history deployment/my-deployment
+
+2) Rollback to previous version
+-----------------------------------
+kubectl rollout undo deployment/my-deployment --to-revision=2
+
+
+
+3. Liveness Probe and Readiness Probe
+-----------------------------------------
+- A liveness probe monitors the availability of an application while it is running. If a liveness probe fails, Kubernetes will restart your pod. This could be useful to catch deadlocks, infinite loops, or just a "stuck" application.
+- A readiness probe monitors when your application becomes available. If a readiness probe fails, Kubernetes will not send any traffic to the unready pods. This is useful if your application has to go through some configuration before it becomes available, or if your application has become overloaded but is recovering from the additional load. By having a readiness probe fail, your application will temporarily not get any more traffic...
+
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: 8080
+  initialDelaySeconds: 3
+  periodSeconds: 3
+
+// For readinessProbe just replace readinessProbe with livenessProbe 
+---------------------------------------------------------
+
+4. Security Context in K8s Deployment
+
+A security context defines privilege and access control settings for a Pod or Container
+
+          securityContext:
+            allowPrivilegeEscalation: false     	// Restirct to root user access for pod and containers        
+            readOnlyRootFilesystem: true			// Allows read only access to files, no write
+            runAsNonRoot: true				// Run as nonroot
+            capabilities:					// Drop the all the capabilities whichever has to Root
+              drop: ["ALL"]
+
+----------------------------
+5. Node Affinity
+Node Affinity: Node affinity is used to define rules that determine which nodes are eligible for scheduling pods.
+Pod Affinity: specify rules that guide the scheduling of pods based on the presence of other pods.
+Anti-Pod Affinity: scheduling of pods to ensure that they are not placed on the same node
+
+
+6. What is Operator?
+-------------------------
+- Operator is tool which used to manage the statefull application like database.
+- It used control loop
+- It has CRD -> Custom Resource Definition (like pod, svc), Its created operator owner/community 
+- Operator having the logic of 
+	- How to create the mysql pods
+	- run
+	- Synchronize
+	- update
+Ex. MySql Operator, Prometheus Operator
+
+7. What are all the phases/steps of a control loop?
+-----------------------------------------------------
+Observe - Identify the cluster current state
+Diff - Identify whether a diff exists between current state and desired state
+Act - Bring current cluster state to the desired state (basically reach a state where there is no diff)
+
+
+8. How do containers communicate in Kubernetes?
+-----------------------------------------------------
+- There are three ways containers can communicate with each other:
+	- Through the localhost and the port number exposed by the other container.
+	- Through a pod’s IP address.
+	- Through a service that has an IP address and usually also has a DNS name.
+
+
+*Advanced*
+===========
+1. A deployment in your EKS cluster fails due to resource limitations. How can you ensure the deployment automatically retries upon resource availability?
+===================================================================================================
+- Implement pod disruption budgets with a minimum availability setting to trigger pod rescheduling when resource constraints are resolved.
+
+
+2.  How can you achieve autoscaling for your EKS cluster based on resource utilization?
+=======================================================================================
+- Implement Amazon EKS Cluster AutoScaler with Container Insights for dynamic scaling based on CPU/memory metrics.
+
+3.  How can you ensure pods in your EKS cluster have least privilege access to AWS resources?
+=======================================================================================
+- Use AWS IAM roles for service accounts to grant pods fine-grained permissions based on the principle of least privilege
+
+4. How can you troubleshoot network connectivity issues between pods running on different nodes in your EKS cluster?
+================================================================================================
+- Utilize Kubernetes network troubleshooting tools like kubectl exec and ping within pods to identify connectivity issues.

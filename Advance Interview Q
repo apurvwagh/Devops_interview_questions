@@ -1,0 +1,68 @@
+Advanced
+---------
+1. Which is better in ECS / EKS? When can be a ECS better choice than Kubernetes?
+===================================================================================
+	- If you want an implementation with a lot of flexibility, greater scalability, and simplicity, it is better to use ECS.
+
+2. What is Git bisect?
+======================
+       - Git bisect is a tool that uses binary search to locate the commit that triggered a bug
+
+3. What is the difference between a registry and a repository?
+===============================================================
+Registry
+--------
+  - A Docker registry is an open-source server-side service used for hosting and distributing Docker images
+  - In a registry, a user can distinguish between Docker images with their tag names	
+  - Docker also has its own default registry called Docker Hub	
+
+Repository
+----------
+  - The repository is a collection of multiple versions of Docker images 
+  - It is stored in a Docker registry 
+  - It has two types: public and private repositories
+
+4. Your production deployment fails due to a recent code change. How do you troubleshoot and rollback to the previous stable version?
+===========================================================================
+- Identify the issue: Utilize CloudWatch logs to pinpoint the specific code change causing the failure.
+- Rollback strategy: Leverage tools like AWS CodeDeploy Blue/Green deployment or AWS Elastic Beanstalk rollback feature to revert to the previous version.
+- Investigate the root cause: Analyze the failed code commit and identify the reason for the issue. Collaborate with developers to fix the problem.
+
+5. You experience a sudden spike in traffic to your web application. How do you ensure scalability and avoid downtime?
+============================================================================
+- Use Auto Scaling Groups to manage the load based on the predefined metrics
+- Use Elastic Load Balancing to distribute the traffic to healthy instances, prevent single point failure
+- CloudWatch Alarms: Set up CloudWatch alarms to trigger notifications or automatic scaling actions based on traffic spikes.
+
+6. You suspect a data leak from your S3 bucket. How do you identify and address the issue?
+================================================================================
+- CloudTrail Logs: Analyze CloudTrail logs to track API calls made on your S3 bucket and identify any suspicious activity.
+- S3 Bucket Access Logs: Enable S3 bucket access logging to get detailed information about user access requests.
+- IAM Policies: Review IAM policies attached to users to ensure they have least privilege access to S3 buckets.
+- S3 Bucket Encryption: Implement S3 server-side encryption to protect data at rest.
+
+7. How do you optimize the cost-efficiency of your AWS environment?
+===================================================================
+- Reserved Instances: Utilize Reserved Instances for predictable workloads to get significant discounts on EC2 instances.
+- Spot Instances: Consider using Spot Instances for non-critical workloads that can tolerate interruptions in exchange for lower costs.
+- Auto Scaling with Idle Termination: Configure Auto Scaling Groups to terminate idle EC2 instances to avoid unnecessary charges.
+- CloudWatch Billing: Leverage CloudWatch Billing to monitor your AWS resource usage and identify cost-saving opportunities.
+
+
+8. How would you implement a disaster recovery solution in AWS using RDS, EC2, and S3?
+=======================================================================================
+· Create an Amazon RDS instance in a primary region, and configure automatic backups to Amazon S3.
+· Create an Amazon EC2 instance in the same primary region
+· Create an Amazon S3 bucket to store data backups, and configure the RDS instance to store backups in the S3 bucket.
+· Set up an Amazon EC2 instance in a secondary region and install the necessary software to access the S3 bucket.
+· Create an Amazon RDS instance in the secondary region and configure it as a replica of the primary RDS instance.
+· Configure the secondary RDS instance to automatically fail over to the primary RDS instance in case of a disaster in the secondary region.
+· Regularly test the failover process to ensure it is working as expected.
+· Use Amazon S3 versioning and object lifecycle management policies to retain backups for a desired period of time.
+· Use Amazon CloudWatch to monitor the RDS instances and EC2 instances, and set up alarms to trigger notifications or automated actions in case of a disaster.
+
+9. On an EC2 instance, an application of yours is active. Once the CPU usage on your instance hits 80%, you must reduce the load on it. What strategy do you use to complete the task?
+=================================================================
+- Setting up an autoscaling group to deploy additional instances
+
+10. Differentiate stopping and terminating instances?

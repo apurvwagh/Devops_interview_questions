@@ -28,8 +28,11 @@ kubectl rollout undo deployment/my-deployment --to-revision=2
 
 3. Liveness Probe and Readiness Probe
 -----------------------------------------
-- A liveness probe monitors the availability of an application while it is running. If a liveness probe fails, Kubernetes will restart your pod. This could be useful to catch deadlocks, infinite loops, or just a "stuck" application.
-- A readiness probe monitors when your application becomes available. If a readiness probe fails, Kubernetes will not send any traffic to the unready pods. This is useful if your application has to go through some configuration before it becomes available, or if your application has become overloaded but is recovering from the additional load. By having a readiness probe fail, your application will temporarily not get any more traffic...
+- A liveness probe monitors the availability of an application while it is running. If a liveness probe fails, Kubernetes will restart your pod. 
+  This could be useful to catch deadlocks, infinite loops, or just a "stuck" application.
+- A readiness probe monitors when your application becomes available. If a readiness probe fails, Kubernetes will not send any traffic to the unready pods. 
+  This is useful if your application has to go through some configuration before it becomes available, or if your application has become overloaded
+  but is recovering from the additional load. By having a readiness probe fail, your application will temporarily not get any more traffic...
 
 livenessProbe:
   httpGet:

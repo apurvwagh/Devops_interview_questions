@@ -17,17 +17,14 @@ metadata:
 
 Command:
 1) See the history of deployment
----------------------------
  kubectl rollout history deployment/my-deployment
-
+---------------------------
 2) Rollback to previous version
------------------------------------
 kubectl rollout undo deployment/my-deployment --to-revision=2
-
-
+-----------------------------------
 
 3. Liveness Probe and Readiness Probe
------------------------------------------
+
 - A liveness probe monitors the availability of an application while it is running. If a liveness probe fails, Kubernetes will restart your pod. 
   This could be useful to catch deadlocks, infinite loops, or just a "stuck" application.
 - A readiness probe monitors when your application becomes available. If a readiness probe fails, Kubernetes will not send any traffic to the unready pods. 
@@ -63,7 +60,6 @@ Anti-Pod Affinity: scheduling of pods to ensure that they are not placed on the 
 
 
 6. What is Operator?
--------------------------
 - Operator is tool which used to manage the statefull application like database.
 - It used control loop
 - It has CRD -> Custom Resource Definition (like pod, svc), Its created operator owner/community 
@@ -82,7 +78,6 @@ Act - Bring current cluster state to the desired state (basically reach a state 
 
 
 8. How do containers communicate in Kubernetes?
------------------------------------------------------
 - There are three ways containers can communicate with each other:
 	- Through the localhost and the port number exposed by the other container.
 	- Through a pod’s IP address.
@@ -92,18 +87,19 @@ Act - Bring current cluster state to the desired state (basically reach a state 
 *Advanced*
 ===========
 1. A deployment in your EKS cluster fails due to resource limitations. How can you ensure the deployment automatically retries upon resource availability?
-===================================================================================================
 - Implement pod disruption budgets with a minimum availability setting to trigger pod rescheduling when resource constraints are resolved.
-
+======================================================================================
 
 2.  How can you achieve autoscaling for your EKS cluster based on resource utilization?
-=======================================================================================
 - Implement Amazon EKS Cluster AutoScaler with Container Insights for dynamic scaling based on CPU/memory metrics.
 
-3.  How can you ensure pods in your EKS cluster have least privilege access to AWS resources?
 =======================================================================================
+
+3.  How can you ensure pods in your EKS cluster have least privilege access to AWS resources?
+
 - Use AWS IAM roles for service accounts to grant pods fine-grained permissions based on the principle of least privilege
 
 4. How can you troubleshoot network connectivity issues between pods running on different nodes in your EKS cluster?
-================================================================================================
+
 - Utilize Kubernetes network troubleshooting tools like kubectl exec and ping within pods to identify connectivity issues.
+================================================================================================

@@ -99,6 +99,7 @@ Act - Bring current cluster state to the desired state (basically reach a state 
 
 - Use AWS IAM roles for service accounts to grant pods fine-grained permissions based on the principle of least privilege
 
+================================================================================================
 4. How can you troubleshoot network connectivity issues between pods running on different nodes in your EKS cluster?
 
 - Utilize Kubernetes network troubleshooting tools like kubectl exec and ping within pods to identify connectivity issues.

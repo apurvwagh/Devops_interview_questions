@@ -2,10 +2,11 @@ Common pod issues in Kubernetes and their resolutions
 
 1. Kubernetes is unable to pull the container image:-
 
+ Command: Use kubectl describe pod <pod-name> to see the exact error message related to image pulling.
  Check image name: Ensure the image name and tag are correct.
  Check image registry: Ensure the image is available in the specified container registry.
  Credentials: If the image is in a private registry, make sure the proper image pull secret is configured and associated with the pod.
- Command: Use kubectl describe pod <pod-name> to see the exact error message related to image pulling.
+
 ================================================================================================
 2. Pods keep crashing and restarting:-
 

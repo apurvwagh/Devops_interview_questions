@@ -125,3 +125,25 @@ Ans: To securely access the instances in the private subnet, you can set up a ba
          This limits access to the bastion host to authorized administrators only.
       3) Place the instances in the private subnet and configure their security groups to allow inbound SSH (or RDP) traffic from the bastion host security group.
       SSH (or RDP) into the bastion host using your private key or password. From the bastion host, you can then SSH (or RDP) into the instances in the private subnet using their private IP addresses.
+============================================================================================================================================================================
+12. If you are unable to connect to an EC2 instance from your local machine, 
+there could be several possible reasons:
+
+Ans :1. Security group rules
+     2. Subnet level: Network access control lists (ACLs)
+     3. Route table configuration: Ensure that the route table is configured correctly to allow traffic to and from the instance
+     4. Instance state:  Running or not running
+     5. Network connectivity issues
+============================================================================================================================================================================
+13. How to mount EFS with EC2 instances
+Ans:
+Steps:
+1.Login into the EC2 with ssh and create one folder efs
+2.sudo apt-get update
+3.sudo apt-get install nfs-common
+4.nfsstat --version	// Check the version
+5.nfsstat -m		// Check mount paths
+6.sudo mount -t nfs4 172.31.44.255:/ efs
+
+	-t : type of protocol
+============================================================================================================================================================================

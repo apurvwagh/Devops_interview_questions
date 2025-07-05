@@ -46,7 +46,7 @@ Repository
 
 7. How do you optimize the cost-efficiency of your AWS environment?
 - Reserved Instances: Utilize Reserved Instances for predictable workloads to get significant discounts on EC2 instances.
-- Spot Instances: Consider using Spot Instances for non-critical workloads that can tolerate interruptions in exchange for lower costs.
+- Spot Instances: Consider using Spot Instances for non-critical workloads that can tolerate interruptions in exchange for lower costs.(we can use for ASG)
 - Auto Scaling with Idle Termination: Configure Auto Scaling Groups to terminate idle EC2 instances to avoid unnecessary charges.
 - CloudWatch Billing: Leverage CloudWatch Billing to monitor your AWS resource usage and identify cost-saving opportunities.
 ===============================================================================================================================

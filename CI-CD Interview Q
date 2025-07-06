@@ -63,14 +63,17 @@ Ans: Backing up Jenkins is a very easy process, there are multiple default and c
     
     - User Content: If you have added any custom content, such as build artifacts, scripts, or job configurations, to the Jenkins environment, make sure to backup those as well.
     
-    - Database Backup: If you are using a database to store information such as build results, you will need to backup the database separately. This typically involves using a database backup tool, such as mysqldump for MySQL, to export the data to another location.
-One can schedule the backups to occur regularly, such as daily or weekly, to ensure that you always have a recent copy of your Jenkins environment available. You can use tools such as cron or Windows Task Scheduler to automate the backup process.
+    - Database Backup: If you are using a database to store information such as build results, you will need to backup the database separately. This typically involves using a database backup tool,
+      such as mysqldump for MySQL, to export the data to another location.
+      One can schedule the backups to occur regularly, such as daily or weekly, to ensure that you always have a recent copy of your Jenkins environment available. 
+      You can use tools such as cron or Windows Task Scheduler to automate the backup process.
 ===============================================================================================================================
 4: How do you store/secure/handle secrets in Jenkins ?
 
 Ans: Again, there are multiple ways to achieve this, Let me give you a brief explanation of all the posible options.
 
-   - Credentials Plugin: Jenkins provides a credentials plugin that can be used to store secrets such as passwords, API keys, and certificates. The secrets are encrypted and stored securely within Jenkins, and can be easily retrieved in build scripts or used in other plugins.
+   - Credentials Plugin: Jenkins provides a credentials plugin that can be used to store secrets such as passwords, API keys, and certificates. The secrets are encrypted and stored securely within Jenkins, 
+     and can be easily retrieved in build scripts or used in other plugins.
    
    - Environment Variables: Secrets can be stored as environment variables in Jenkins and referenced in build scripts. However, this method is less secure because environment variables are visible in the build logs.
    
@@ -84,16 +87,17 @@ Ans: This is a very simple question interviewers ask to understand if you are ac
 ===============================================================================================================================
 6: What is shared modules in Jenkins ?
 
-Ans: Shared modules in Jenkins refer to a collection of reusable code and resources that can be shared across multiple Jenkins jobs. This allows for easier maintenance, reduced duplication, and improved consistency across multiple build processes. For example, shared modules can be used in cases like:
+Ans: Shared modules in Jenkins refer to a collection of reusable code and resources that can be shared across multiple Jenkins jobs. This allows for easier maintenance, reduced duplication,
+      and improved consistency across multiple build processes. For example, shared modules can be used in cases like:
 
-        - Libraries: Custom Java libraries, shell scripts, and other resources that can be reused across multiple jobs.
+    - Libraries: Custom Java libraries, shell scripts, and other resources that can be reused across multiple jobs.
         
-        - Jenkinsfile: A shared Jenkinsfile can be used to define the build process for multiple jobs, reducing duplication and making it easier to manage the build process for multiple projects.
+   - Jenkinsfile: A shared Jenkinsfile can be used to define the build process for multiple jobs, reducing duplication and making it easier to manage the build process for multiple projects.
         
-        - Plugins: Common plugins can be installed once as a shared module and reused across multiple jobs, reducing the overhead of managing plugins on individual jobs.
+   - Plugins: Common plugins can be installed once as a shared module and reused across multiple jobs, reducing the overhead of managing plugins on individual jobs.
         
-        - Global Variables: Shared global variables can be defined and used across multiple jobs, making it easier to manage common build parameters
-          such as version numbers, artifact repositories, and environment variables.
+    - Global Variables: Shared global variables can be defined and used across multiple jobs, making it easier to manage common build parameters
+      such as version numbers, artifact repositories, and environment variables.
 ===============================================================================================================================
 7: can you use Jenkins to build applications with multiple programming languages using different agents in different stages ?
 

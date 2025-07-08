@@ -1,0 +1,11 @@
+Hello Everyone, let’s discuss the kubernetes workflow. Whenever we are executing any command let’s say “kubectl create pod nginx”, how the pod request work in the backend and how a pod is got created:
+
+The request is authenticated first and validated.
+The “kube-api-server” creates a POD object, without assigning it to a node, updates the information of the newly created pod in “ETCD Cluster” and updated/shows us a message that a POD is got created.
+The “kube-scheduler” which is continually monitoring the “kube-api-server” gets to know that a new pod is got created with no node assigned to it.
+The “kube-scheduler” identifies the right node (according to pod resource requirement, pod/node affinity rules, labels & selectors etc.) to place the new POD and communicate back to the “kube-api-server” (with the information of the right node for the pod)
+The “kube-api-server” again updates the information to the “ETCD Cluster” received from “kube-scheduler”.
+The “kube-api-server” then passed the same information to the “kubelet” on the appropriate worker node identified by “kube-scheduler” in the 4th step.
+The “kubelet” then creates the pod on node and instructs the “Container Runtime Engine” to deploy the application image/container.
+Once done, the “kubelet” updates the information/status of the pod back to the “kube-api-server”.
+And “kube-api-server” updates the information/data back in the “ETCD Cluster”.

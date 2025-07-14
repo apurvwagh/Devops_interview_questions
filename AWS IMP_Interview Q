@@ -2,7 +2,7 @@
 
 1: Your EC2 has a public IP and the port is open in the security group, but it's unreachable. Why?
 
-Ans: Check the subnet’s network ACL. If inbound or outbound rules are blocking traffic, the security group won’t help. NACLs silently drop traffic with no message.
+Ans: Check the subnet’s NACL. If inbound or outbound rules are blocking traffic, the security group won’t help. NACLs silently drop traffic with no message.
 =============================================================================================================================================================================
 
 2: You shared an AMI with another AWS account, but they still can’t launch an instance from it. What’s usually missed?

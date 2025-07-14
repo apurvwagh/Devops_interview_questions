@@ -34,6 +34,7 @@ Ans: In the current project we use the following tools orchestrated with Jenkins
 
 tools -> Maven, Sonar, AppScan, ArgoCD, and Kubernetes
 Coming to the implementation, the entire process takes place in 8 steps
+git repository where we have application source code,
 
 1. Code Commit: Developers commit code changes to a Git repository hosted on GitHub.
 2. Jenkins Build: Jenkins is triggered to build the code using Maven. Maven builds the code and runs unit tests.

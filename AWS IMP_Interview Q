@@ -67,7 +67,7 @@ Ans: By default, instances within the same VPC can communicate with each other u
 ============================================================================================================================================================================
 5: You want to implement strict network access control for your VPC resources. How would you achieve this?
 
-Ans: To implement granular network access control for VPC resources, we can use Network Access Control Lists (ACLs). 
+Ans: To implement granular network access control for VPC resources, we can use Network Access Control Lists (NACLs). 
   NACLs are stateless and operate at the subnet level. We can define inbound and outbound rules in the NACLs to allow or deny traffic based on source and destination IP addresses, ports, and protocols. 
   By carefully configuring NACL rules, we can enforce fine-grained access control for traffic entering and leaving the subnets.
 ============================================================================================================================================================================

@@ -18,7 +18,7 @@ Registry
 
 Repository
 ----------
-  - The repository is a collection of multiple versions of Docker images 
+  - The repository is a collection of multiple versions of Docker images
   - It is stored in a Docker registry 
   - It has two types: public and private repositories
 ===============================================================================================================================

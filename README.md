@@ -56,11 +56,19 @@ After updating the outbound NACL rule, connectivity was restored.
 Cross Questions from the Interviewer
 Q1. What is the difference between Security Group and NACL?
 
-Security Group                                  NACL
-Stateful                                       Stateless
-Applied to EC2 ENIs.                           Applied to Subnets
-Allow rules only.                              Allow and Deny rules
-Return traffic automatically allowed.          Return traffic must be explicitly allowed
+Security Group                                  
+Stateful                                       
+Applied to EC2 ENIs.                           
+Allow rules only.                              
+Return traffic automatically allowed.          
+
+NACL
+Stateless
+Applied to Subnets
+Allow and Deny rules
+Return traffic must be explicitly allowed
+
+
 
 Q2. Why do NACLs need both inbound and outbound rules?
 

@@ -54,35 +54,83 @@ After updating the outbound NACL rule, connectivity was restored.
 ⸻
 
 Cross Questions from the Interviewer
-
 Q1. What is the difference between Security Group and NACL?
 
-Security Group
+Security Group                                  NACL
+Stateful                                       Stateless
+Applied to EC2 ENIs.                           Applied to Subnets
+Allow rules only.                              Allow and Deny rules
+Return traffic automatically allowed.          Return traffic must be explicitly allowed
 
-NACL
+Q2. Why do NACLs need both inbound and outbound rules?
 
-Stateful
+Answer:
 
-Stateless
+Because NACLs are stateless.
+Client → EC2  (Inbound)
+EC2 → Client  (Outbound Response)
+If outbound is denied, the client never receives the response, even though the request reached the server.
 
-Applied to EC2 ENIs
+⸻
 
-Applied to Subnets
+Q3. How do you know if a subnet is public?
 
-Allow rules only
+Answer:
 
-Allow and Deny rules
+A subnet is public if its Route Table contains:
+Destination: 0.0.0.0/0
+Target: Internet Gateway
+Without that route, it’s effectively private.
 
-Return traffic automatically allowed
+Q4. The EC2 has a Public IP and an Internet Gateway. Why is it still unreachable?
 
-Return traffic must be explicitly allowed
+Answer:
 
+Possible reasons include:
 
+* Network ACL blocking traffic.
+* OS firewall (iptables, firewalld, ufw).
+* Application not running.
+* Application listening on the wrong port.
+* Application bound only to 127.0.0.1 instead of 0.0.0.0.
+* Route Table misconfiguration.
 
+Q5. SSH is also not working. What will you check?
 
+I would verify:
 
+* EC2 instance state (Running)
+* EC2 Status Checks (2/2 passed)
+* Internet Gateway
+* Route Table
+* Security Group (port 22)
+* Network ACL
+* Public IP or Elastic IP
+* OS firewall
+* SSH service (sshd) is running
 
+⸻
 
+Q6.  Why do we need both a Security Group and a NACL?
 
+Answer:
 
-=============================================================================================================================================================================
+They protect at different layers:
+
+* Security Group: Instance-level firewall with stateful filtering.
+* Network ACL: Subnet-level firewall with stateless filtering.
+
+Using both provides defense in depth.
+
+⸻
+
+Instead, demonstrate a structured troubleshooting process:
+
+1. VPC – Internet Gateway attached.
+2. Routing – Public Route Table.
+3. Subnet – Public vs. Private.
+4. NACL – Inbound and outbound rules.
+5. Security Group – Correct ports and source.
+6. EC2 – Instance health.
+7. Operating System – Firewall and listening ports.
+8. Application – Running and bound to the correct interface.

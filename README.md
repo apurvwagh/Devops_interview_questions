@@ -43,6 +43,39 @@ My checklist is:
 
 My goal is to identify exactly where the request is being blocked instead of assuming it’s an AWS networking issue.
 
+Real Production Scenario
+
+We had an EC2 instance running Nginx with a public IP. The Security Group allowed port 443, but users couldn’t access the application.
+
+I verified the Security Group first, which was correct. Then I checked the subnet’s Network ACL and found that outbound ephemeral ports (1024–65535) were denied. Since NACLs are stateless, the response packets were blocked.
+
+After updating the outbound NACL rule, connectivity was restored.
+
+⸻
+
+Cross Questions from the Interviewer
+
+Q1. What is the difference between Security Group and NACL?
+
+Security Group
+
+NACL
+
+Stateful
+
+Stateless
+
+Applied to EC2 ENIs
+
+Applied to Subnets
+
+Allow rules only
+
+Allow and Deny rules
+
+Return traffic automatically allowed
+
+Return traffic must be explicitly allowed
 
 
 

@@ -47,21 +47,24 @@ steps {
 
 
 7. Jenkins pipeline seems slow. How can you optimize its performance?
-======================================================================
+
 - Use parallel stages to run independent tasks concurrently within the pipeline.
 
+=======================================================================================
 
 8. You suspect a security vulnerability in a Jenkins plugin. What steps should you take?
-=======================================================================================
 - Disable the plugin, update Jenkins to the latest version, and investigate alternative secure plugins if necessary
 
+=======================================================================================
+
 9. How can you achieve high availability for your Jenkins service?
-====================================================================
+
 - Set up a Jenkins cluster with multiple nodes for redundancy and load balancing.
 
+=======================================================================================
 
 10. To create an agent in Jenkins, you can follow these steps:
-================================================================
+
 1. Goto Jenkins Dashboard
 2. Goto Manage Nodes
 3. Create new node and setup the name and type of the node
